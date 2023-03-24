@@ -27,7 +27,9 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         }
         listLength++;
         return toAppend;
+        return nothing;
     }
+    //hello world!
 
     public Node insertAtSpot(int spot, Album album) {
         // create the new node
