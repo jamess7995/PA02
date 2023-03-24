@@ -36,7 +36,8 @@ public class DoublyLinkedListTest {
         Album a2 = new Album(2,(new ArrayList<String>(List.of("Teal Orchids", "The Runaways"))),"Parkbench UpsideDown", 8);
         Album a3 = new Album(3,(new ArrayList<String>(List.of("PostModern Jukebox"))),"Overalls", 3);
         Album a4 = new Album(4,(new ArrayList<String>(List.of("Watsky"))),"Intention", 9);
-        Album a5 = new Album(4,(new ArrayList<String>(List.of("Owl City", "Nate Reuss"))),"Strawberry Avalanche", 18);
+        Album a5 = new Album(5,(new ArrayList<String>(List.of("Owl City", "Nate Reuss"))),"Strawberry Avalanche", 18);
+        Album a6 = new Album(6,(new ArrayList<String>(List.of("T. Swift", "Nate Reuss"))),"Avalanche of Power", 12);
         dll.append(a1);
         dll.append(a2);
         dll.insertAtSpot(1, a3);
@@ -44,7 +45,10 @@ public class DoublyLinkedListTest {
         dll.insertAtSpot(0, a4);
         assertEquals(a4, dll.head.album);
         dll.insertAtSpot(4, a5);
-        assertEquals(dll.tail.album, a5);
-
+        assertEquals(a5 , dll.tail.album);
+        dll.insertAtSpot(5, a6);
+        assertEquals(a6 , dll.tail.album);
+        assertEquals(a4 , dll.head.album);
+        assertEquals(a1 , dll.head.next.next.album);
     }
 }

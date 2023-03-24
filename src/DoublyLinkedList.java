@@ -27,39 +27,46 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         }
         listLength++;
         return toAppend;
-        return nothing;
     }
-    //hello world!
 
     public Node insertAtSpot(int spot, Album album) {
         // create the new node
         if (spot > listLength || spot < 0) {
             throw new IllegalArgumentException("You must choose an index within the list's length. Head = 0, next item = 1.");
-        }
-        else {
+        } else {
             Node toAppend = new Node(album);
-            Node tempNode = this.head;
-            if (spot == 0) {
-                this.head.previous = toAppend;
-                toAppend.next = head;
-                this.head.next = tempNode;
-                this.head = toAppend;
+            if (head == null) {
+                append(album);
+                return toAppend;
             } else {
-                while (spot > 0) {
-                    tempNode = tempNode.next;
-                    spot--;
+                Node tempNode = this.head;
+                if (spot == 0) {
+                    this.head.previous = toAppend;
+                    toAppend.next = head;
+                    this.head.next = tempNode;
+                    this.head = toAppend;
+                    System.out.println("From the spot = 0: " + "Head: " + this.head + " Head.Next: " + this.head.next);
                 }
-                toAppend.previous = tempNode.previous;
-                toAppend.next = tempNode;
-                Node<Album> previousNode = tempNode.previous;
-                tempNode.previous = toAppend;
-                previousNode.next = toAppend;
+                if (spot == listLength) {
+                    this.tail.next = toAppend;
+                    toAppend.previous = this.tail;
+                    this.tail = toAppend;
+                    System.out.println("From the spot = listLength: " + "Head: " + this.head + " Head.Next: " + this.head.next);
+                } else {
+                        while (spot > 0) {
+                            tempNode = tempNode.next;
+                            spot--;
+                        }
+                        toAppend.previous = tempNode.previous;
+                        toAppend.next = tempNode;
+                        Node<Album> previousNode = tempNode.previous;
+                        tempNode.previous = toAppend;
+                        previousNode.next = toAppend;
+                    System.out.println("From the spot = !0: " + "Head: " + this.head + " Head.Next: " + this.head.next);
+                    }
+                }
+                listLength++;
+                return toAppend;
             }
-            this.tail = this.tail.next;
-            listLength++;
-            return toAppend;
         }
     }
-
-
-}
